@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# IDE and MacOS files
+.idea/
+*.iml
+.project
+.pydevproject
+.settings
+.vscode/
+.DS_Store
+
+.ok_history
