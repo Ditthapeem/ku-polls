@@ -10,4 +10,4 @@ Vision Statement
 A Vision Statement page provide the [Vision Statement](../../wiki/Vision-Statement) of the project. 
 
 Requirements  
-A Requirements page provide the [Requirements](../../wiki/Requirements) that you should know before create polls or survey.
+A Requirements page provide the [Requirements](../../wiki/Requirements) of the project.
