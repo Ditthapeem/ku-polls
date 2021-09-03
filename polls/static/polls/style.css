@@ -1,9 +1,43 @@
 li a {
     color: green;
+    font-size: 25px;
+}
+
+li {
+    font-size: 25px
 }
 
 body {
 
-    background: white url("images/background.gif") no-repeat;
-
+    background: url("images/background.gif") no-repeat;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+div.frame{
+
+  background-color: #8AC007;
+  position: frame;
+  width: 100%;
+  bottom: 50px;
+  border: 3px solid #8AC007;
+  box-shadow: 10px 5px 5px green;
+}
+
+
+div.box{
+
+  background-color: #8AC007;
+  position: frame;
+  width: 80px;
+  bottom: 50px;
+  border: 3px solid #8AC007;
+  box-shadow: 10px 5px 5px green;
+}
+
+fieldset{
+    background-color:white !important;
+}
+
