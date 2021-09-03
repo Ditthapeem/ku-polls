@@ -8,14 +8,15 @@
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
     <fieldset>
-        <legend><h1><div class="frame">{{ question.question_text }}</div></h1></legend>
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <legend><h2><div class="frame">{{ question.question_text }}</div></h2></legend>
+        {% if error_message %}<div class="rise"><p><strong> {{ error_message }}</strong></p></div>{% endif %}
         {% for choice in question.choice_set.all %}
             <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{choice.id}}">
             <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
         {% endfor %}
-
+    <input type="submit" value="Vote">
     </fieldset>
-<input type="submit" value="Vote">
+
 </form>
+<div class="box"><a href="{% url 'polls:index' %}"><strong> Home page </strong></a></div>
 

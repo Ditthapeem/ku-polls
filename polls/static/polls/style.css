@@ -1,5 +1,6 @@
 li a {
     color: green;
+    line-height: 200%;
     font-size: 25px;
 }
 
@@ -38,6 +39,16 @@ div.box{
 }
 
 fieldset{
-    background-color:white !important;
+    background-color:white ;
 }
 
+label{
+    font-size: 150%;
+}
+
+div.rise{
+    color: red;
+    line-height: 150%;
+    font-size: 25px;
+
+}
