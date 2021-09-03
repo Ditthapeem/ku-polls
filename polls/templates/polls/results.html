@@ -12,6 +12,6 @@
         {% endfor %}
     </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<button><a href="{% url 'polls:detail' question.id %}" >Vote again?</a></button>
 </fieldset>
-<div class="box"><a href="{% url 'polls:index' %}"><strong> Home page </strong></a></div>
+<a href="{% url 'polls:index' %}" class="button"><strong> Home page </strong></a>
