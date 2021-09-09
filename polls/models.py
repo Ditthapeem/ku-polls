@@ -7,6 +7,15 @@ class Question(models.Model):
     """A poll question with some choices."""
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
+    end_date = models.DateTimeField('date ended')
+
+    def is_published(self):
+        now = timezone.now()
+        return self.pub_date <= now
+
+    def can_vote(self):
+        now = timezone.now()
+        return self.is_published() and now <= self.end_date
 
     def __str__(self):
         """Display a text in the question
