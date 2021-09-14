@@ -6,12 +6,18 @@
 <fieldset>
 
     <legend><h2><div class="frame">Voting result</div></h2></legend>
-    <ul>
-        {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize}}</li>
-        {% endfor %}
-    </ul>
 
-<button><a href="{% url 'polls:detail' question.id %}" >Vote again?</a></button>
+    <div class="table" >
+        <table>
+        {% for choice in question.choice_set.all %}
+        <tr>
+            <td><span style="float: left" >{{ choice.choice_text }}</span></td>
+            <td><span style="float: right"> {{ choice.votes }} vote{{ choice.votes|pluralize}}</span></td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+<!--<button><a href="{% url 'polls:detail' question.id %}" >Vote again?</a></button>-->
 </fieldset>
 <a href="{% url 'polls:index' %}" class="button"><strong> Home page </strong></a>
+

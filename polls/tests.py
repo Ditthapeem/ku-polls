@@ -55,7 +55,7 @@ class QuestionModelTests(TestCase):
         self.assertIs(question.is_published(), True)
 
     def test_can_vote(self):
-        time = timezone.now() + + datetime.timedelta(days=30)
+        time = timezone.now() + datetime.timedelta(days=30)
         future = timezone.now() + datetime.timedelta(days=60)
         question = Question(pub_date=time, end_date=future)
         self.assertIs(question.can_vote(), False)

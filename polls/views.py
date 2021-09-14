@@ -29,7 +29,11 @@ class DetailView(generic.DetailView):
         """
         Excludes any questions that aren't published yet.
         """
-        return Question.objects.filter(pub_date__lte=timezone.now())
+        can_vote_question = []
+        for question in Question.objects.all():
+            if question.can_vote() and question.is_published():
+                can_vote_question.append(question.id)
+        return Question.objects.filter(id__in=can_vote_question)
 
 
 class ResultsView(generic.DetailView):
