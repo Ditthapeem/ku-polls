@@ -42,7 +42,7 @@ div.rise{
     font-size: 25px;
 
 }
-.table table, td {
+.table table, td, th {
   margin-left: 5%;
   margin-right: 20px;
   border: 1px solid black;
@@ -66,7 +66,8 @@ div.rise{
     font-size: 30px;
     color: red;
     width: 50%;
+    height: 50px;
     bottom: 50px;
-    border: 1px solid red;
+    border: 5px solid red;
     background-color:white ;
 }

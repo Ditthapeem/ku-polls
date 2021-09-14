@@ -10,6 +10,7 @@
 
             {% for question in latest_question_list %}
             <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li>
+            <a href="{% url 'polls:results' question.id %}" class="button"><strong> Result page </strong></a>
             {% endfor %}
 
         </ul>
@@ -21,7 +22,7 @@
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
-    <center> <ul {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</ul></center>
+    <center><ul {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</ul></center>
     {% endfor %}
 </ul>
 {% endif %}

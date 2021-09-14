@@ -7,8 +7,13 @@
 
     <legend><h2><div class="frame">Voting result</div></h2></legend>
 
-    <div class="table" >
+    <center><div class="table" >
         <table>
+            <tr>
+                <th>Choice</th>
+                <th>Result</th>
+            </tr>
+
         {% for choice in question.choice_set.all %}
         <tr>
             <td><span style="float: left" >{{ choice.choice_text }}</span></td>
@@ -16,7 +21,7 @@
         </tr>
         {% endfor %}
         </table>
-    </div>
+    </div></center>
 <!--<button><a href="{% url 'polls:detail' question.id %}" >Vote again?</a></button>-->
 </fieldset>
 <a href="{% url 'polls:index' %}" class="button"><strong> Home page </strong></a>
