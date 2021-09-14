@@ -62,3 +62,11 @@ div.rise{
   margin: 4px 2px;
   cursor: pointer;
 }
+.error {
+    font-size: 30px;
+    color: red;
+    width: 50%;
+    bottom: 50px;
+    border: 1px solid red;
+    background-color:white ;
+}
