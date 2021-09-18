@@ -15,7 +15,8 @@ class Question(models.Model):
 
     def can_vote(self):
         now = timezone.now()
-        return self.is_published() and now <= self.end_date
+        if self.end_date != None:
+            return self.is_published() and now <= self.end_date
 
     def __str__(self):
         """Display a text in the question
