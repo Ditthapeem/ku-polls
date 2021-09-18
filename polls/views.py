@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.contrib import messages
 
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
     template = loader.get_template('polls/index.html')
     context = {
         'latest_question_list': latest_question_list,
