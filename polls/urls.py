@@ -1,3 +1,4 @@
+"""This module contain url patterns are *relative* to 'polls' app."""
 from django.urls import path
 from . import views
 
