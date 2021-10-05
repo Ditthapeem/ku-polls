@@ -1,5 +1,8 @@
 language: python
 
+env:
+  - SECRET_KEY="ANAKINSKYWALKER" DEBUG=TRUE
+
 # you can use a different version of Python
 python: "3.6"
 
