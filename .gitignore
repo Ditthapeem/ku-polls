@@ -139,3 +139,6 @@ dmypy.json
 
 .ok_history
 db.sqlite3
+
+#/test
+#/catalog
