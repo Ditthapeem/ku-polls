@@ -1,4 +1,5 @@
 # ku-polls
+[![Build Status](https://app.travis-ci.com/HuskyIsHere/ku-polls.svg?branch=main)](https://app.travis-ci.com/HuskyIsHere/ku-polls)
 
 A web application for conduction polls or survey at [Kasetsart University](https://www.ku.ac.th/th) for KU community and allow everyone to see the results of a poll or survey after ending date.
 
