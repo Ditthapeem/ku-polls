@@ -1,0 +1,5 @@
+# Python version = 3.6
+# Requirement
+coverage
+django
+python-decouple
