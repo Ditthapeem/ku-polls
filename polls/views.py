@@ -4,10 +4,11 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from .models import Question, Choice
+from .models import Question, Choice, Vote
 from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -50,7 +51,7 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
-
+@login_required(login_url='/accounts/login/')
 def vote(request, question_id):
     """Redisplay the question voting form.
 
@@ -62,7 +63,8 @@ def vote(request, question_id):
     """
     question = get_object_or_404(Question, pk=question_id)
     try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+        choice_id = request.POST['choice']
+        selected_choice = question.choice_set.get(pk=choice_id)
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
         return render(request, 'polls/detail.html', {
@@ -70,10 +72,31 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice",
         })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
+        user = request.user
+        vote = get_vote_for_user(question, user)
+        if not vote:
+            vote = Vote(user=user, choice=selected_choice)
+        else:
+            vote.choice = selected_choice
+        vote.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results',
                                             args=(question.id,)))
+
+def get_vote_for_user(question, user):
+    """
+    Find and return an existing vote for user on poll question.
+
+    Returns:
+        The user vote
+    """
+    try:
+        vote = Vote.objects.filter(user=user).filter(choice__question=question)
+        if vote.count() == 0:
+            return None
+        else:
+            return vote[0]
+    except Vote.DoesNotExist:
+        return None
