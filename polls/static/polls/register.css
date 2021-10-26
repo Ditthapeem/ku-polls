@@ -1,0 +1,47 @@
+body {
+
+    background-color: #8FBC8F;
+
+}
+
+div.frame{
+
+  background-color: #8AC007;
+  position: frame;
+  width: 100%;
+  bottom: 50px;
+  border: 10px solid #8AC007;
+  box-shadow: 10px 5px 5px green;
+  display: inline-block;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+fieldset{
+    background-color: #90EE90;
+    width: 30%;
+    padding: 15px 32px;
+    margin: auto;
+
+td{
+    text-align: center;
+}
+
+label{
+    text-align: center;
+}
+
+.center {
+    text-align: center
+}

@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from .form import CreateUserForm
+
 
 
 def index(request):
@@ -112,11 +114,27 @@ def signup(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_passwd = form.cleaned_data.get('password')
-            user = authenticate(username=username,password=raw_passwd)
+            user = authenticate(username=username,
+                                password=raw_passwd)
             login(request, user)
             return redirect('polls')
         # what if form is not valid?
         # we should display a message in signup.html
     else:
         form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form':form})
+    return render(request,
+                  'registration/signup.html',
+                  {'form':form})
+
+
+def registerPage(request):
+    form = CreateUserForm()
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form':form}
+    return render(request,
+                  'registration/signup.html',
+                  {'form':form})

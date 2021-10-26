@@ -1,12 +1,38 @@
-<h2>Register</h2>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/register.css' %}">
+
+<legend><h2><div class="frame">Register</div></h2></legend>
+
 <form method="POST">
     {% csrf_token %}
-    <table>
-    {{ form.as_table }}
-    <tr>
-    <td colspan="2">
-    <button type="submit">Register</button>
-    </td>
-    </tr>
-    </table>
+    <fieldset>
+        <center><table>
+            <tr>
+            <td colspan="2" ><label><b>{{ form.username.label }} :</b></label> </br>
+            {{ form.username }}</td>
+            </tr>
+
+            <tr>
+            <td colspan="2" ><label><b>{{ form.email.label }} :</b></label> </br>
+            {{ form.email}}</td>
+            </tr>
+
+            <tr>
+            <td colspan="2" ><label><b>{{ form.password1.label }} :</b></label> </br>
+            {{ form.password1}}</td>
+            </tr>
+
+            <tr>
+            <td colspan="2" ><label><b>{{ form.password2.label }} :</b></label> </br>
+            {{ form.password2}}</td>
+            </tr>
+
+
+        </table></center>
+
+
+       <button class="button" onclick="window.location.href='{% url 'polls:index' %}';" type="submit">Register</button> <button class="button" style="float: right;" type="submit">Login </button>
+</fieldset>
+
 </form>
+
