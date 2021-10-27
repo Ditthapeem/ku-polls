@@ -1,29 +1,32 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'polls/register.css' %}">
+<link rel="stylesheet" href="{% static 'polls/register.css' %}">
 
-<legend><h2><div class="frame">Register</div></h2></legend>
+<legend><h1><div class="frame">Register</div></h1></legend>
+
 
 <form method="POST">
     {% csrf_token %}
     <fieldset>
         <center><table>
             <tr>
-            <td colspan="2" ><label><b>{{ form.username.label }} :</b></label> </br>
-            {{ form.username }}</td>
+            <div class="group">
+            <td colspan="2" ><label><b>{{ form.username.label }} :</b></label>
+            {{ form.username}}</td>
+            </div>
             </tr>
 
             <tr>
-            <td colspan="2" ><label><b>{{ form.email.label }} :</b></label> </br>
+            <td colspan="2" ><label><b>{{ form.email.label }} :</b></label>
             {{ form.email}}</td>
             </tr>
 
             <tr>
-            <td colspan="2" ><label><b>{{ form.password1.label }} :</b></label> </br>
+            <td colspan="2" ><label><b>{{ form.password1.label }} :</b></label>
             {{ form.password1}}</td>
             </tr>
 
             <tr>
-            <td colspan="2" ><label><b>{{ form.password2.label }} :</b></label> </br>
+            <td colspan="2" ><label><b>{{ form.password2.label }} :</b></label>
             {{ form.password2}}</td>
             </tr>
 
@@ -31,8 +34,8 @@
         </table></center>
 
 
-       <button class="button" onclick="window.location.href='{% url 'polls:index' %}';" type="submit">Register</button> <button class="button" style="float: right;" type="submit">Login </button>
-</fieldset>
+        <button class="button" type="submit">Register</button>
+    </fieldset>
 
 </form>
 

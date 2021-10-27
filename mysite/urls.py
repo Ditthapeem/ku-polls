@@ -20,6 +20,6 @@ from polls import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('register/', views.registerPage, name='register'),
+    path('signup/', views.signup, name='register'),
     path('polls/', include('polls.urls'))
 ]
