@@ -125,16 +125,3 @@ def get_vote_for_user(question, user):
 #     return render(request,
 #                   'registration/signup.html',
 #                   {'form':form})
-
-
-def signup(request):
-    form = CreateUserForm()
-
-    if request.method == "POST":
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-    context = {'form':form}
-    return render(request,
-                  'registration/signup.html',
-                  {'form':form})
