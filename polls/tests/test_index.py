@@ -5,7 +5,6 @@ from django.urls import reverse
 
 from polls.models import Question
 
-from django.contrib.auth.models import User
 
 def create_question(question_text, days, date_future):
     """Create the question.
