@@ -1,7 +1,14 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/logout.css' %}">
+
 <html>
 <body>
-<h2>Logged out</h2>
-<p>
-Want to vote again?
-<a href="{% url 'login'%}">Login again</a>
+<center><h1><div class="frame">Logged out</div></h1></center>
+<fieldset>
+    <center><p>
+        You have been logged out.
+    </p>
+    <a href="{% url 'login'%}" class="button">Login again?</a></center>
+</fieldset>
+
 </body>
