@@ -1,9 +1,43 @@
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  font-size: 20px;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+</style>
+
 {% load static %}
 <link rel="stylesheet" href="{% static 'polls/register.css' %}">
 
-<legend><h1><div class="frame">Register <a href="{% url 'login'%}" class="button">Login</a></div></h1></legend>
+<head><ul>
+    <li><a>Register</a></li>
+    <li style="float:right"><a class="active" href="{% url 'login'%}" >Login</a></li>
+</ul></head>
 
-
+<br>
 <form method="POST">
     {% csrf_token %}
     <fieldset>

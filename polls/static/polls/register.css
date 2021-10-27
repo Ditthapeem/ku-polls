@@ -5,7 +5,6 @@ body {
 }
 
 div.frame{
-
   background-color: #8AC007;
   position: frame;
   width: 100%;
@@ -13,6 +12,11 @@ div.frame{
   border: 10px solid #8AC007;
   box-shadow: 10px 5px 5px green;
   display: inline-block;
+}
+
+.flex{
+  display: flex;
+  justify-content: flex-end;
 }
 
 .button {
@@ -50,6 +54,3 @@ label{
     font-size: 40px;
 }
 
-.a{
-    float: left;
-}
