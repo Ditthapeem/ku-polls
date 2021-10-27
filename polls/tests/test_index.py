@@ -1,54 +1,11 @@
-"""This module contain test case for polls app."""
-
 import datetime
 from django.test import TestCase
 from django.utils import timezone
 from django.urls import reverse
 
-from .models import Question
+from polls.models import Question
 
 from django.contrib.auth.models import User
-
-
-class QuestionModelTests(TestCase):
-    """Model for testing Question date and time."""
-
-    def test_was_published_recently_with_future_question(self):
-        """Check questions whose pub_date is in the future."""
-        time = timezone.now() + datetime.timedelta(days=30)
-        future = timezone.now() + datetime.timedelta(days=31)
-        future_question = Question(pub_date=time, end_date=future)
-        self.assertIs(future_question.was_published_recently(), False)
-
-    def test_was_published_recently_with_old_question(self):
-        """Check questions whose pub_date is older than 1 day."""
-        future = timezone.now() + datetime.timedelta(days=30)
-        time = timezone.now() - datetime.timedelta(days=1, seconds=1)
-        old_question = Question(pub_date=time, end_date=future)
-        self.assertIs(old_question.was_published_recently(), False)
-
-    def test_was_published_recently_with_recent_question(self):
-        """Check questions whose pub_date is within the last day."""
-        now = timezone.now()
-        future = now + datetime.timedelta(days=30)
-        time = now - datetime.timedelta(hours=23, minutes=59, seconds=59)
-        recent_question = Question(pub_date=time, end_date=future)
-        self.assertIs(recent_question.was_published_recently(), True)
-
-    def test_is_published(self):
-        """Test that question are publish or not."""
-        time = timezone.now() - datetime.timedelta(days=1, seconds=1)
-        future = timezone.now() + datetime.timedelta(days=30)
-        question = Question(pub_date=time, end_date=future)
-        self.assertIs(question.is_published(), True)
-
-    def test_can_vote(self):
-        """Test that question can be vote or not."""
-        time = timezone.now() + datetime.timedelta(days=30)
-        future = timezone.now() + datetime.timedelta(days=60)
-        question = Question(pub_date=time, end_date=future)
-        self.assertIs(question.can_vote(), False)
-
 
 def create_question(question_text, days, date_future):
     """Create the question.
@@ -63,7 +20,6 @@ def create_question(question_text, days, date_future):
     time = timezone.now() + datetime.timedelta(days=days)
     future = timezone.now() + datetime.timedelta(days=date_future)
     return Question.objects.create(question_text=question_text, pub_date=time, end_date=future)
-
 
 class QuestionIndexViewTests(TestCase):
     """Test for question index view."""
@@ -101,7 +57,6 @@ class QuestionIndexViewTests(TestCase):
         response = self.client.get(reverse('polls:index'))
         self.assertQuerysetEqual(response.context['latest_question_list'], [question2, question1], )
 
-
 class QuestionDetailViewTests(TestCase):
     """Test for detail question."""
 
@@ -126,31 +81,3 @@ class QuestionDetailViewTests(TestCase):
         url = reverse('polls:detail', args=(past_question.id, ))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
-
-
-class UserAuthTest(TestCase):
-
-    def setUp(self):
-        super().setUp()
-        self.username = "testuser"
-        self.password = "Fat-Chance!"
-        self.user1 = User.objects.create_user(
-                         username=self.username,
-                         password=self.password,
-                         email="testuser@nowhere.com")
-        self.user1.first_name = "Tester"
-        self.user1.save()
-
-    def test_login_view(self):
-        """Test that a user can login via the login view."""
-        login_url = reverse("login")
-        # Can get the login page
-        response = self.client.get(login_url)
-        self.assertEqual(200, response.status_code)
-        # Can login using POST
-        # usage: client.post(url, {'key1":"value", "key2":"value"})
-        form_data = {"username": self.username, "password": self.password}
-        response = self.client.post(login_url, form_data)
-        self.assertEqual(302, response.status_code)
-        # should redirect us to the polls index page ("polls:index")
-        self.assertRedirects(response, reverse("polls:index"))
