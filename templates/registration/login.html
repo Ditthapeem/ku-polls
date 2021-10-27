@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'polls/login.css' %}">
 
 
-<legend><h1><div class="frame">Login</div></h1></legend>
+<legend><h1><div class="frame">Login <a href="{% url 'signup'%}" class="button">Signup</a></div></h1></legend>
 <body>
 <form method="post">
     {% csrf_token %}
