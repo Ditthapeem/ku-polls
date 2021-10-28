@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
 
-<div class="frame"><h1>Welcome to KU Polls</h1></div>
+<div class="frame"><h1>Welcome to KU Polls <a class="button" href="{% url 'logout'%}" style="float:right">Logout</a></h1></div>
 
 
 <form action="{% url 'polls:vote' question.id %}" method="post">

@@ -1,7 +1,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
-<div class="frame"><h1>{{ question.question_text }}</h1></div>
+<div class="frame"><h1>{{ question.question_text }} <a class="button" href="{% url 'logout'%}" style="float:right">Logout</a></h1></div>
 
 <fieldset>
 
