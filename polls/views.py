@@ -1,5 +1,8 @@
 """This module handle the request and generate each template."""
 
+from django.dispatch import receiver
+import logging
+from django.contrib.auth.signals import user_logged_in, user_login_failed
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
@@ -105,6 +108,19 @@ def get_vote_for_user(question, user):
             return vote[0]
     except Vote.DoesNotExist:
         return None
+
+
+logger = logging.getLogger('polls')
+
+@receiver(user_logged_in)
+def user_logged_in_callback(sender, request, user, **kwargs):
+    ip = request.META.get('REMOTE_ADDR')
+    logger.info(f"{user} logged in from {ip}")
+
+@receiver(user_login_failed)
+def user_login_failed_callback(sender, credentials, request, **kwargs):
+    ip = request.META.get('REMOTE_ADDR')
+    logger.warning(f"Invalid login attempt for {credentials['username']} from {ip}")
 
 # def signup(request):
 #     """Register a new user."""
