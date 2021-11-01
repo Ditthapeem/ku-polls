@@ -17,3 +17,12 @@ Iteration plans
 - [Iteration 1 plan](../../wiki/Iteration-1-plan)
 - [Iteration 2 plan](../../wiki/Iteration-2-plan)
 - [Iteration 3 plan](../../wiki/Iteration-3-plan)
+
+## Running KU Polls
+
+Users provided by the initial data (users.json):
+
+| Username  | Password    |
+|-----------|-------------|
+| demo1     | Vote4me!    |
+| demo2     | Vote4me2    |
