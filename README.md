@@ -26,3 +26,9 @@ Users provided by the initial data (users.json):
 |-----------|-------------|
 | demo1     | Vote4me!    |
 | demo2     | Vote4me2    |
+
+## Initialize Polls Data in a New Installation
+```
+python3 manage.py migrate
+python3 manage.py loaddata users polls
+```
